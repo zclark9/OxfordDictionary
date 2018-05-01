@@ -1,41 +1,42 @@
 package com.example.yaboyzc.oxforddictionary;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    String word;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final EditText word  = findViewById(R.id.editText);
-        final TextView text = findViewById(R.id.textView);
-        final Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("editText", word.getText().toString());
-                printCreator(text);
-
-                //Log.d("textView", text.setText())
-
-            }
-        });
+        final TextView box = findViewById(R.id.textView);
 
 
     }
-    public void printCreator(TextView view) {
-        //final TextView text = findViewById(R.id.textView);
-        view.setText("Sherag big gay guy");
-        //((TextView)findViewById(R.id.textView.).setText
+
+    public void requestApiButtonClick(View v) {
+        final EditText text = findViewById(R.id.editText);
+        word = dictionaryEntries(text.getText().toString());
+        MyDictionaryRequest myDictionaryRequest = new MyDictionaryRequest(this);
+        myDictionaryRequest.execute(word);
+
+    }
+
+    private String dictionaryEntries(String s) {
+        final String language = "en";
+        final String word = s;
+        final String word_id = word.toLowerCase();
+        return "https://od-api.oxforddictionaries.com:443/api/v1/entries/" + language + "/" + word_id;
     }
 }
