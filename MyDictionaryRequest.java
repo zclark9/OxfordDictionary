@@ -1,7 +1,9 @@
 package com.example.yaboyzc.oxforddictionary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,6 +89,8 @@ public class MyDictionaryRequest extends AsyncTask<String,Integer,String> {
             def = de.getString(0);
 
 
+            TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView);
+            txtView.setText(def);
 
             Toast.makeText(context,def,Toast.LENGTH_LONG).show();
 

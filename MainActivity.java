@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -23,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
         final TextView box = findViewById(R.id.textView);
 
 
+
     }
 
     public void requestApiButtonClick(View v) {
+        //final TextView box = findViewById(R.id.textView);
+        //Toast.makeText(this,box.getText().toString(),Toast.LENGTH_LONG).show();
         final EditText text = findViewById(R.id.editText);
         word = dictionaryEntries(text.getText().toString());
         MyDictionaryRequest myDictionaryRequest = new MyDictionaryRequest(this);
