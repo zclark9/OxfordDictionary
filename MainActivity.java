@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView box = findViewById(R.id.textView);
 
 
-
     }
 
     public void requestApiButtonClick(View v) {
