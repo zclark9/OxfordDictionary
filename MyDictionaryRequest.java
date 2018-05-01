@@ -88,7 +88,7 @@ public class MyDictionaryRequest extends AsyncTask<String,Integer,String> {
 
             def = de.getString(0);
 
-
+            //
             TextView txtView = ((Activity)context).findViewById(R.id.textView);
             String place = "Definition: " + def;
             txtView.setText(place);
