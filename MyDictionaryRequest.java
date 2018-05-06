@@ -3,8 +3,6 @@ package com.example.yaboyzc.oxforddictionary;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +29,7 @@ public class MyDictionaryRequest extends AsyncTask<String,Integer,String> {
 
 
     MyDictionaryRequest(Context context) {
-
         this.context = context;
-
     }
 
     @Override
@@ -82,13 +78,12 @@ public class MyDictionaryRequest extends AsyncTask<String,Integer,String> {
 
             JSONObject jsonObject = e.getJSONObject(0);
             JSONArray sensesArray = jsonObject.getJSONArray("senses");
-
+            
             JSONObject definition = sensesArray.getJSONObject(0);
             JSONArray de = definition.getJSONArray("definitions");
 
             def = de.getString(0);
 
-            //
             TextView txtView = ((Activity)context).findViewById(R.id.textView);
             String place = "Definition: " + def;
             txtView.setText(place);

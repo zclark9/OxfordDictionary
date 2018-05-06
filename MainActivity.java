@@ -21,18 +21,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView box = findViewById(R.id.textView);
-
 
     }
 
     public void requestApiButtonClick(View v) {
-        //final TextView box = findViewById(R.id.textView);
-        //Toast.makeText(this,box.getText().toString(),Toast.LENGTH_LONG).show();
         final EditText text = findViewById(R.id.editText);
+        final TextView def = findViewById(R.id.textView);
+        def.setVisibility(View.INVISIBLE);
+
+        String notWord = "Not a word dumbo!";
+        def.setText(notWord);
+
         word = dictionaryEntries(text.getText().toString());
         MyDictionaryRequest myDictionaryRequest = new MyDictionaryRequest(this);
         myDictionaryRequest.execute(word);
+
+        def.setVisibility(View.VISIBLE);
+
+
 
     }
 
